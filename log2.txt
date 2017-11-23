@@ -1,0 +1,220 @@
+
+
+======= Program State =======
+Symbol Table:
+
+Execution Stack:
+    openFile(file, test2.in)
+readFile(file, var_c)
+Print(var_c);
+if(var_c) {
+        readFile(file, var_c)
+Print(var_c);
+    } else {
+        Print(0);
+    }
+closeFile(file)
+
+File Table:
+{}
+Output:
+
+
+======= Program State =======
+Symbol Table:
+
+Execution Stack:
+    openFile(file, test2.in)
+readFile(file, var_c)
+Print(var_c);
+if(var_c) {
+        readFile(file, var_c)
+Print(var_c);
+    } else {
+        Print(0);
+    }
+    closeFile(file)
+
+File Table:
+{}
+Output:
+
+
+======= Program State =======
+Symbol Table:
+
+Execution Stack:
+    openFile(file, test2.in)
+readFile(file, var_c)
+Print(var_c);
+    if(var_c) {
+        readFile(file, var_c)
+Print(var_c);
+    } else {
+        Print(0);
+    }
+    closeFile(file)
+
+File Table:
+{}
+Output:
+
+
+======= Program State =======
+Symbol Table:
+
+Execution Stack:
+    openFile(file, test2.in)
+readFile(file, var_c)
+    Print(var_c);
+    if(var_c) {
+        readFile(file, var_c)
+Print(var_c);
+    } else {
+        Print(0);
+    }
+    closeFile(file)
+
+File Table:
+{}
+Output:
+
+
+======= Program State =======
+Symbol Table:
+
+Execution Stack:
+    openFile(file, test2.in)
+    readFile(file, var_c)
+    Print(var_c);
+    if(var_c) {
+        readFile(file, var_c)
+Print(var_c);
+    } else {
+        Print(0);
+    }
+    closeFile(file)
+
+File Table:
+{}
+Output:
+
+
+======= Program State =======
+Symbol Table:
+    file:1
+
+Execution Stack:
+    readFile(file, var_c)
+    Print(var_c);
+    if(var_c) {
+        readFile(file, var_c)
+Print(var_c);
+    } else {
+        Print(0);
+    }
+    closeFile(file)
+
+File Table:
+{1=test2.in}
+Output:
+
+
+======= Program State =======
+Symbol Table:
+    file:1
+    var_c:10
+
+Execution Stack:
+    Print(var_c);
+    if(var_c) {
+        readFile(file, var_c)
+Print(var_c);
+    } else {
+        Print(0);
+    }
+    closeFile(file)
+
+File Table:
+{1=test2.in}
+Output:
+
+
+======= Program State =======
+Symbol Table:
+    file:1
+    var_c:10
+
+Execution Stack:
+    if(var_c) {
+        readFile(file, var_c)
+Print(var_c);
+    } else {
+        Print(0);
+    }
+    closeFile(file)
+
+File Table:
+{1=test2.in}
+Output:
+    10
+
+
+======= Program State =======
+Symbol Table:
+    file:1
+    var_c:10
+
+Execution Stack:
+    readFile(file, var_c)
+    Print(var_c);
+    closeFile(file)
+
+File Table:
+{1=test2.in}
+Output:
+    10
+
+
+======= Program State =======
+Symbol Table:
+    file:1
+    var_c:50
+
+Execution Stack:
+    Print(var_c);
+    closeFile(file)
+
+File Table:
+{1=test2.in}
+Output:
+    10
+
+
+======= Program State =======
+Symbol Table:
+    file:1
+    var_c:50
+
+Execution Stack:
+    closeFile(file)
+
+File Table:
+{1=test2.in}
+Output:
+    10
+    50
+
+
+======= Program State =======
+Symbol Table:
+    file:1
+    var_c:50
+
+Execution Stack:
+
+File Table:
+{}
+Output:
+    10
+    50
