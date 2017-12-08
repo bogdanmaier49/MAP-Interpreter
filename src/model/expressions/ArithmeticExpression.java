@@ -31,5 +31,12 @@ public class ArithmeticExpression implements Expression {
     }
 
 
+    @Override
+    public String toString () {
+        return e1 + " " + operator + " " + e2;
+    }
+
+
+
 
 }

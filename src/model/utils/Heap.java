@@ -5,10 +5,10 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class Heap implements Dictionary<Integer, Integer> {
-    private ConcurrentHashMap<Integer, Integer> table;
+    private HashMap<Integer, Integer> table;
 
     public Heap () {
-        table = new ConcurrentHashMap<Integer, Integer>();
+        table = new HashMap<>();
     }
 
     @Override
@@ -53,6 +53,10 @@ public class Heap implements Dictionary<Integer, Integer> {
     }
 
     public void setContent (Map<Integer, Integer> m) {
+        table = (HashMap<Integer, Integer>)m;
+    }
 
+    public HashMap<Integer, Integer> getContent () {
+        return table;
     }
 }

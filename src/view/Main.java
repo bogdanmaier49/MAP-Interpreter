@@ -2,7 +2,9 @@ package view;
 
 import controller.Controller;
 import model.*;
+import model.expressions.ArithmeticExpression;
 import model.expressions.ConstantExpression;
+import model.expressions.Expression;
 import model.expressions.VariableExpression;
 import model.statements.*;
 import model.utils.*;
@@ -75,6 +77,46 @@ public class Main {
     }
 
 
+    public static Statement testProgram3 () {
+        /*
+            new(a,20);
+            new(a,10);
+            wH(a,20);
+            print(a);
+         */
+
+        Statement first = new CompStatement(
+                new AllocateStatement("a", new ConstantExpression(20)),
+                new AllocateStatement("a", new ConstantExpression(10)));
+        Statement second = new CompStatement(
+                new WriteHeapStatement("a", new ConstantExpression(20)),
+                new PrintStatement(new VariableExpression("a"))
+        );
+
+        return new CompStatement(first, second);
+    }
+
+    public static Statement testProgram4 () {
+        /*
+            a = 5
+            while(a > 0) {
+                print (a);
+                a = a - 1;
+            }
+
+         */
+
+        Statement a = new AssignStatement("a", new ConstantExpression(5));
+        Statement dinWhile = new CompStatement(
+                new PrintStatement(new VariableExpression("a")),
+                new AssignStatement("a", new ArithmeticExpression(new VariableExpression("a"), '-', new ConstantExpression(1)))
+        );
+        Statement whileSt = new WhileStatement(new VariableExpression("a"),dinWhile);
+
+        return new CompStatement(a, whileSt);
+    }
+
+
     public static ProgramState createProgramState () {
         Dictionary<String, Integer> symbolTable = new SymbolTable();
         Stack<Statement> execStack = new ExecutionStack();
@@ -100,6 +142,16 @@ public class Main {
         Controller controller2 = new Controller(new ProgramStateRepository("log2.txt"));
         controller2.getRepository().add(program2);
 
+        ProgramState program3 = createProgramState();
+        program3.getExecutionStack().push(testProgram3());
+        Controller controller3 = new Controller(new ProgramStateRepository("log3.txt"));
+        controller3.getRepository().add(program3);
+
+        ProgramState program4 = createProgramState();
+        program4.getExecutionStack().push(testProgram4());
+        Controller controller4 = new Controller(new ProgramStateRepository("log4.txt"));
+        controller4.getRepository().add(program4);
+
 /*
         try {
             controller1.executeAll();
@@ -112,6 +164,10 @@ public class Main {
         menu.addCommand(new ExitCommand("0", "exit"));
         menu.addCommand(new RunExample("1", testProgram1().toString(), controller1));
         menu.addCommand(new RunExample("2", testProgram2().toString(), controller2));
+        menu.addCommand(new RunExample("3", testProgram3().toString(), controller3));
+        menu.addCommand(new RunExample("4", testProgram4().toString(), controller4));
+
+
         menu.show();
 
 

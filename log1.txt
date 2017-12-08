@@ -1,0 +1,302 @@
+
+
+======= Program State =======
+Symbol Table:
+
+Execution Stack:
+    openFile(file, test.in)
+readFile(file, var_c)
+if(var_c) {
+Print(var_c);
+} else {
+Print(-1);
+}
+closeFile(file)
+
+File Table:
+{}
+Heap:
+
+Output:
+
+
+======= Program State =======
+Symbol Table:
+
+Execution Stack:
+    openFile(file, test.in)
+readFile(file, var_c)
+if(var_c) {
+Print(var_c);
+} else {
+Print(-1);
+}
+    closeFile(file)
+
+File Table:
+{}
+Heap:
+
+Output:
+
+
+======= Program State =======
+Symbol Table:
+
+Execution Stack:
+    openFile(file, test.in)
+readFile(file, var_c)
+    if(var_c) {
+Print(var_c);
+} else {
+Print(-1);
+}
+    closeFile(file)
+
+File Table:
+{}
+Heap:
+
+Output:
+
+
+======= Program State =======
+Symbol Table:
+
+Execution Stack:
+    openFile(file, test.in)
+    readFile(file, var_c)
+    if(var_c) {
+Print(var_c);
+} else {
+Print(-1);
+}
+    closeFile(file)
+
+File Table:
+{}
+Heap:
+
+Output:
+
+
+======= Program State =======
+Symbol Table:
+    file:1
+
+Execution Stack:
+    readFile(file, var_c)
+    if(var_c) {
+Print(var_c);
+} else {
+Print(-1);
+}
+    closeFile(file)
+
+File Table:
+{1=test.in}
+Heap:
+
+Output:
+
+
+======= Program State =======
+Symbol Table:
+    file:1
+    var_c:10
+
+Execution Stack:
+    if(var_c) {
+Print(var_c);
+} else {
+Print(-1);
+}
+    closeFile(file)
+
+File Table:
+{1=test.in}
+Heap:
+
+Output:
+
+
+======= Program State =======
+Symbol Table:
+    file:1
+    var_c:10
+
+Execution Stack:
+    closeFile(file)
+
+File Table:
+{1=test.in}
+Heap:
+
+Output:
+    10
+
+
+======= Program State =======
+Symbol Table:
+    file:1
+    var_c:10
+
+Execution Stack:
+
+File Table:
+{}
+Heap:
+
+Output:
+    10
+
+
+======= Program State =======
+Symbol Table:
+
+Execution Stack:
+    openFile(file, test.in)
+readFile(file, var_c)
+if(var_c) {
+Print(var_c);
+} else {
+Print(-1);
+}
+closeFile(file)
+
+File Table:
+{}
+Heap:
+
+Output:
+
+
+======= Program State =======
+Symbol Table:
+
+Execution Stack:
+    openFile(file, test.in)
+readFile(file, var_c)
+if(var_c) {
+Print(var_c);
+} else {
+Print(-1);
+}
+    closeFile(file)
+
+File Table:
+{}
+Heap:
+
+Output:
+
+
+======= Program State =======
+Symbol Table:
+
+Execution Stack:
+    openFile(file, test.in)
+readFile(file, var_c)
+    if(var_c) {
+Print(var_c);
+} else {
+Print(-1);
+}
+    closeFile(file)
+
+File Table:
+{}
+Heap:
+
+Output:
+
+
+======= Program State =======
+Symbol Table:
+
+Execution Stack:
+    openFile(file, test.in)
+    readFile(file, var_c)
+    if(var_c) {
+Print(var_c);
+} else {
+Print(-1);
+}
+    closeFile(file)
+
+File Table:
+{}
+Heap:
+
+Output:
+
+
+======= Program State =======
+Symbol Table:
+    file:1
+
+Execution Stack:
+    readFile(file, var_c)
+    if(var_c) {
+Print(var_c);
+} else {
+Print(-1);
+}
+    closeFile(file)
+
+File Table:
+{1=test.in}
+Heap:
+
+Output:
+
+
+======= Program State =======
+Symbol Table:
+    file:1
+    var_c:10
+
+Execution Stack:
+    if(var_c) {
+Print(var_c);
+} else {
+Print(-1);
+}
+    closeFile(file)
+
+File Table:
+{1=test.in}
+Heap:
+
+Output:
+
+
+======= Program State =======
+Symbol Table:
+    file:1
+    var_c:10
+
+Execution Stack:
+    closeFile(file)
+
+File Table:
+{1=test.in}
+Heap:
+
+Output:
+    10
+
+
+======= Program State =======
+Symbol Table:
+    file:1
+    var_c:10
+
+Execution Stack:
+
+File Table:
+{}
+Heap:
+
+Output:
+    10

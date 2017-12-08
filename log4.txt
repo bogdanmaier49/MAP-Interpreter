@@ -1,0 +1,968 @@
+
+
+======= Program State =======
+Symbol Table:
+
+Execution Stack:
+    a = 5;
+while( a ){
+Print(a);
+a = model.expressions.ArithmeticExpression@2b193f2d;
+}
+
+File Table:
+{}
+Heap:
+
+Output:
+
+
+======= Program State =======
+Symbol Table:
+
+Execution Stack:
+    a = 5;
+    while( a ){
+Print(a);
+a = model.expressions.ArithmeticExpression@2b193f2d;
+}
+
+File Table:
+{}
+Heap:
+
+Output:
+
+
+======= Program State =======
+Symbol Table:
+    a:5
+
+Execution Stack:
+    while( a ){
+Print(a);
+a = model.expressions.ArithmeticExpression@2b193f2d;
+}
+
+File Table:
+{}
+Heap:
+
+Output:
+
+
+======= Program State =======
+Symbol Table:
+    a:5
+
+Execution Stack:
+    Print(a);
+a = model.expressions.ArithmeticExpression@2b193f2d;
+    while( a ){
+Print(a);
+a = model.expressions.ArithmeticExpression@2b193f2d;
+}
+
+File Table:
+{}
+Heap:
+
+Output:
+
+
+======= Program State =======
+Symbol Table:
+    a:5
+
+Execution Stack:
+    Print(a);
+    a = model.expressions.ArithmeticExpression@2b193f2d;
+    while( a ){
+Print(a);
+a = model.expressions.ArithmeticExpression@2b193f2d;
+}
+
+File Table:
+{}
+Heap:
+
+Output:
+
+
+======= Program State =======
+Symbol Table:
+    a:5
+
+Execution Stack:
+    a = model.expressions.ArithmeticExpression@2b193f2d;
+    while( a ){
+Print(a);
+a = model.expressions.ArithmeticExpression@2b193f2d;
+}
+
+File Table:
+{}
+Heap:
+
+Output:
+    5
+
+
+======= Program State =======
+Symbol Table:
+    a:4
+
+Execution Stack:
+    while( a ){
+Print(a);
+a = model.expressions.ArithmeticExpression@2b193f2d;
+}
+
+File Table:
+{}
+Heap:
+
+Output:
+    5
+
+
+======= Program State =======
+Symbol Table:
+    a:4
+
+Execution Stack:
+    Print(a);
+a = model.expressions.ArithmeticExpression@2b193f2d;
+    while( a ){
+Print(a);
+a = model.expressions.ArithmeticExpression@2b193f2d;
+}
+
+File Table:
+{}
+Heap:
+
+Output:
+    5
+
+
+======= Program State =======
+Symbol Table:
+    a:4
+
+Execution Stack:
+    Print(a);
+    a = model.expressions.ArithmeticExpression@2b193f2d;
+    while( a ){
+Print(a);
+a = model.expressions.ArithmeticExpression@2b193f2d;
+}
+
+File Table:
+{}
+Heap:
+
+Output:
+    5
+
+
+======= Program State =======
+Symbol Table:
+    a:4
+
+Execution Stack:
+    a = model.expressions.ArithmeticExpression@2b193f2d;
+    while( a ){
+Print(a);
+a = model.expressions.ArithmeticExpression@2b193f2d;
+}
+
+File Table:
+{}
+Heap:
+
+Output:
+    5
+    4
+
+
+======= Program State =======
+Symbol Table:
+    a:3
+
+Execution Stack:
+    while( a ){
+Print(a);
+a = model.expressions.ArithmeticExpression@2b193f2d;
+}
+
+File Table:
+{}
+Heap:
+
+Output:
+    5
+    4
+
+
+======= Program State =======
+Symbol Table:
+    a:3
+
+Execution Stack:
+    Print(a);
+a = model.expressions.ArithmeticExpression@2b193f2d;
+    while( a ){
+Print(a);
+a = model.expressions.ArithmeticExpression@2b193f2d;
+}
+
+File Table:
+{}
+Heap:
+
+Output:
+    5
+    4
+
+
+======= Program State =======
+Symbol Table:
+    a:3
+
+Execution Stack:
+    Print(a);
+    a = model.expressions.ArithmeticExpression@2b193f2d;
+    while( a ){
+Print(a);
+a = model.expressions.ArithmeticExpression@2b193f2d;
+}
+
+File Table:
+{}
+Heap:
+
+Output:
+    5
+    4
+
+
+======= Program State =======
+Symbol Table:
+    a:3
+
+Execution Stack:
+    a = model.expressions.ArithmeticExpression@2b193f2d;
+    while( a ){
+Print(a);
+a = model.expressions.ArithmeticExpression@2b193f2d;
+}
+
+File Table:
+{}
+Heap:
+
+Output:
+    5
+    4
+    3
+
+
+======= Program State =======
+Symbol Table:
+    a:2
+
+Execution Stack:
+    while( a ){
+Print(a);
+a = model.expressions.ArithmeticExpression@2b193f2d;
+}
+
+File Table:
+{}
+Heap:
+
+Output:
+    5
+    4
+    3
+
+
+======= Program State =======
+Symbol Table:
+    a:2
+
+Execution Stack:
+    Print(a);
+a = model.expressions.ArithmeticExpression@2b193f2d;
+    while( a ){
+Print(a);
+a = model.expressions.ArithmeticExpression@2b193f2d;
+}
+
+File Table:
+{}
+Heap:
+
+Output:
+    5
+    4
+    3
+
+
+======= Program State =======
+Symbol Table:
+    a:2
+
+Execution Stack:
+    Print(a);
+    a = model.expressions.ArithmeticExpression@2b193f2d;
+    while( a ){
+Print(a);
+a = model.expressions.ArithmeticExpression@2b193f2d;
+}
+
+File Table:
+{}
+Heap:
+
+Output:
+    5
+    4
+    3
+
+
+======= Program State =======
+Symbol Table:
+    a:2
+
+Execution Stack:
+    a = model.expressions.ArithmeticExpression@2b193f2d;
+    while( a ){
+Print(a);
+a = model.expressions.ArithmeticExpression@2b193f2d;
+}
+
+File Table:
+{}
+Heap:
+
+Output:
+    5
+    4
+    3
+    2
+
+
+======= Program State =======
+Symbol Table:
+    a:1
+
+Execution Stack:
+    while( a ){
+Print(a);
+a = model.expressions.ArithmeticExpression@2b193f2d;
+}
+
+File Table:
+{}
+Heap:
+
+Output:
+    5
+    4
+    3
+    2
+
+
+======= Program State =======
+Symbol Table:
+    a:1
+
+Execution Stack:
+    Print(a);
+a = model.expressions.ArithmeticExpression@2b193f2d;
+    while( a ){
+Print(a);
+a = model.expressions.ArithmeticExpression@2b193f2d;
+}
+
+File Table:
+{}
+Heap:
+
+Output:
+    5
+    4
+    3
+    2
+
+
+======= Program State =======
+Symbol Table:
+    a:1
+
+Execution Stack:
+    Print(a);
+    a = model.expressions.ArithmeticExpression@2b193f2d;
+    while( a ){
+Print(a);
+a = model.expressions.ArithmeticExpression@2b193f2d;
+}
+
+File Table:
+{}
+Heap:
+
+Output:
+    5
+    4
+    3
+    2
+
+
+======= Program State =======
+Symbol Table:
+    a:1
+
+Execution Stack:
+    a = model.expressions.ArithmeticExpression@2b193f2d;
+    while( a ){
+Print(a);
+a = model.expressions.ArithmeticExpression@2b193f2d;
+}
+
+File Table:
+{}
+Heap:
+
+Output:
+    5
+    4
+    3
+    2
+    1
+
+
+======= Program State =======
+Symbol Table:
+    a:0
+
+Execution Stack:
+    while( a ){
+Print(a);
+a = model.expressions.ArithmeticExpression@2b193f2d;
+}
+
+File Table:
+{}
+Heap:
+
+Output:
+    5
+    4
+    3
+    2
+    1
+
+
+======= Program State =======
+Symbol Table:
+    a:0
+
+Execution Stack:
+
+File Table:
+{}
+Heap:
+
+Output:
+    5
+    4
+    3
+    2
+    1
+
+
+======= Program State =======
+Symbol Table:
+
+Execution Stack:
+    a = 5;
+while( a ){
+Print(a);
+a = a - 1;
+}
+
+File Table:
+{}
+Heap:
+
+Output:
+
+
+======= Program State =======
+Symbol Table:
+
+Execution Stack:
+    a = 5;
+    while( a ){
+Print(a);
+a = a - 1;
+}
+
+File Table:
+{}
+Heap:
+
+Output:
+
+
+======= Program State =======
+Symbol Table:
+    a:5
+
+Execution Stack:
+    while( a ){
+Print(a);
+a = a - 1;
+}
+
+File Table:
+{}
+Heap:
+
+Output:
+
+
+======= Program State =======
+Symbol Table:
+    a:5
+
+Execution Stack:
+    Print(a);
+a = a - 1;
+    while( a ){
+Print(a);
+a = a - 1;
+}
+
+File Table:
+{}
+Heap:
+
+Output:
+
+
+======= Program State =======
+Symbol Table:
+    a:5
+
+Execution Stack:
+    Print(a);
+    a = a - 1;
+    while( a ){
+Print(a);
+a = a - 1;
+}
+
+File Table:
+{}
+Heap:
+
+Output:
+
+
+======= Program State =======
+Symbol Table:
+    a:5
+
+Execution Stack:
+    a = a - 1;
+    while( a ){
+Print(a);
+a = a - 1;
+}
+
+File Table:
+{}
+Heap:
+
+Output:
+    5
+
+
+======= Program State =======
+Symbol Table:
+    a:4
+
+Execution Stack:
+    while( a ){
+Print(a);
+a = a - 1;
+}
+
+File Table:
+{}
+Heap:
+
+Output:
+    5
+
+
+======= Program State =======
+Symbol Table:
+    a:4
+
+Execution Stack:
+    Print(a);
+a = a - 1;
+    while( a ){
+Print(a);
+a = a - 1;
+}
+
+File Table:
+{}
+Heap:
+
+Output:
+    5
+
+
+======= Program State =======
+Symbol Table:
+    a:4
+
+Execution Stack:
+    Print(a);
+    a = a - 1;
+    while( a ){
+Print(a);
+a = a - 1;
+}
+
+File Table:
+{}
+Heap:
+
+Output:
+    5
+
+
+======= Program State =======
+Symbol Table:
+    a:4
+
+Execution Stack:
+    a = a - 1;
+    while( a ){
+Print(a);
+a = a - 1;
+}
+
+File Table:
+{}
+Heap:
+
+Output:
+    5
+    4
+
+
+======= Program State =======
+Symbol Table:
+    a:3
+
+Execution Stack:
+    while( a ){
+Print(a);
+a = a - 1;
+}
+
+File Table:
+{}
+Heap:
+
+Output:
+    5
+    4
+
+
+======= Program State =======
+Symbol Table:
+    a:3
+
+Execution Stack:
+    Print(a);
+a = a - 1;
+    while( a ){
+Print(a);
+a = a - 1;
+}
+
+File Table:
+{}
+Heap:
+
+Output:
+    5
+    4
+
+
+======= Program State =======
+Symbol Table:
+    a:3
+
+Execution Stack:
+    Print(a);
+    a = a - 1;
+    while( a ){
+Print(a);
+a = a - 1;
+}
+
+File Table:
+{}
+Heap:
+
+Output:
+    5
+    4
+
+
+======= Program State =======
+Symbol Table:
+    a:3
+
+Execution Stack:
+    a = a - 1;
+    while( a ){
+Print(a);
+a = a - 1;
+}
+
+File Table:
+{}
+Heap:
+
+Output:
+    5
+    4
+    3
+
+
+======= Program State =======
+Symbol Table:
+    a:2
+
+Execution Stack:
+    while( a ){
+Print(a);
+a = a - 1;
+}
+
+File Table:
+{}
+Heap:
+
+Output:
+    5
+    4
+    3
+
+
+======= Program State =======
+Symbol Table:
+    a:2
+
+Execution Stack:
+    Print(a);
+a = a - 1;
+    while( a ){
+Print(a);
+a = a - 1;
+}
+
+File Table:
+{}
+Heap:
+
+Output:
+    5
+    4
+    3
+
+
+======= Program State =======
+Symbol Table:
+    a:2
+
+Execution Stack:
+    Print(a);
+    a = a - 1;
+    while( a ){
+Print(a);
+a = a - 1;
+}
+
+File Table:
+{}
+Heap:
+
+Output:
+    5
+    4
+    3
+
+
+======= Program State =======
+Symbol Table:
+    a:2
+
+Execution Stack:
+    a = a - 1;
+    while( a ){
+Print(a);
+a = a - 1;
+}
+
+File Table:
+{}
+Heap:
+
+Output:
+    5
+    4
+    3
+    2
+
+
+======= Program State =======
+Symbol Table:
+    a:1
+
+Execution Stack:
+    while( a ){
+Print(a);
+a = a - 1;
+}
+
+File Table:
+{}
+Heap:
+
+Output:
+    5
+    4
+    3
+    2
+
+
+======= Program State =======
+Symbol Table:
+    a:1
+
+Execution Stack:
+    Print(a);
+a = a - 1;
+    while( a ){
+Print(a);
+a = a - 1;
+}
+
+File Table:
+{}
+Heap:
+
+Output:
+    5
+    4
+    3
+    2
+
+
+======= Program State =======
+Symbol Table:
+    a:1
+
+Execution Stack:
+    Print(a);
+    a = a - 1;
+    while( a ){
+Print(a);
+a = a - 1;
+}
+
+File Table:
+{}
+Heap:
+
+Output:
+    5
+    4
+    3
+    2
+
+
+======= Program State =======
+Symbol Table:
+    a:1
+
+Execution Stack:
+    a = a - 1;
+    while( a ){
+Print(a);
+a = a - 1;
+}
+
+File Table:
+{}
+Heap:
+
+Output:
+    5
+    4
+    3
+    2
+    1
+
+
+======= Program State =======
+Symbol Table:
+    a:0
+
+Execution Stack:
+    while( a ){
+Print(a);
+a = a - 1;
+}
+
+File Table:
+{}
+Heap:
+
+Output:
+    5
+    4
+    3
+    2
+    1
+
+
+======= Program State =======
+Symbol Table:
+    a:0
+
+Execution Stack:
+
+File Table:
+{}
+Heap:
+
+Output:
+    5
+    4
+    3
+    2
+    1

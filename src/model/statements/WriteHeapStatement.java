@@ -33,9 +33,10 @@ public class WriteHeapStatement implements Statement {
             throw new StatementException(varName + " does not exist in symbol table\n");
 
         int addr = symbolTable.get(varName);
-
-        if (! heap.exists(addr))
+        System.out.println("ADDR: " + addr);
+        if (!heap.exists(addr)) {
             throw new StatementException(varName + " does not exist in heap\n");
+        }
 
         heap.update(addr, result);
 

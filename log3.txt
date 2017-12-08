@@ -1,0 +1,128 @@
+
+
+======= Program State =======
+Symbol Table:
+
+Execution Stack:
+    new(a, 20 );
+new(a, 10 );
+writeHeap( a, 20);
+Print(a);
+
+File Table:
+{}
+Heap:
+
+Output:
+
+
+======= Program State =======
+Symbol Table:
+
+Execution Stack:
+    new(a, 20 );
+new(a, 10 );
+    writeHeap( a, 20);
+Print(a);
+
+File Table:
+{}
+Heap:
+
+Output:
+
+
+======= Program State =======
+Symbol Table:
+
+Execution Stack:
+    new(a, 20 );
+    new(a, 10 );
+    writeHeap( a, 20);
+Print(a);
+
+File Table:
+{}
+Heap:
+
+Output:
+
+
+======= Program State =======
+Symbol Table:
+    a:1
+
+Execution Stack:
+    new(a, 10 );
+    writeHeap( a, 20);
+Print(a);
+
+File Table:
+{}
+Heap:
+    1:20
+
+Output:
+
+
+======= Program State =======
+Symbol Table:
+    a:2
+
+Execution Stack:
+    writeHeap( a, 20);
+Print(a);
+
+File Table:
+{}
+Heap:
+    1:20
+    2:10
+
+Output:
+
+
+======= Program State =======
+Symbol Table:
+    a:2
+
+Execution Stack:
+    writeHeap( a, 20);
+    Print(a);
+
+File Table:
+{}
+Heap:
+    2:10
+
+Output:
+
+
+======= Program State =======
+Symbol Table:
+    a:2
+
+Execution Stack:
+    Print(a);
+
+File Table:
+{}
+Heap:
+    2:20
+
+Output:
+
+
+======= Program State =======
+Symbol Table:
+    a:2
+
+Execution Stack:
+
+File Table:
+{}
+Heap:
+    2:20
+
+Output:
+    2

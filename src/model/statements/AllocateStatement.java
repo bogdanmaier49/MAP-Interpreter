@@ -26,8 +26,8 @@ public class AllocateStatement implements Statement {
 
             int id=IDGenerator.generateHeapID();
 
+            symbolTable.add(varName, id);
             heap.add(id, exprRes);
-            symbolTable.add(varName, exprRes);
 
         } catch (ExpressionException e) {
             e.printStackTrace();

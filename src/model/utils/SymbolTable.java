@@ -5,6 +5,7 @@ import model.utils.Dictionary;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class SymbolTable implements Dictionary<String,Integer> {
 
@@ -53,6 +54,16 @@ public class SymbolTable implements Dictionary<String,Integer> {
         }
 
         return str.toString();
+    }
+
+    @Override
+    public void setContent (Map<String, Integer> m) {
+        table =  (HashMap<String, Integer>) m;
+    }
+
+    @Override
+    public HashMap<String, Integer> getContent () {
+        return table;
     }
 
 }
