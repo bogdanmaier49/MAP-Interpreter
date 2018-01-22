@@ -1,61 +1,88 @@
 package model;
 
+import exceptions.StatementException;
+import model.statements.IDGenerator;
 import model.statements.Statement;
 import model.utils.*;
 
-import java.io.File;
-
 public class ProgramState {
+    private int id;
+    private IStack<Statement> exec;
+    private IList<Integer> messages;
+    private Dictionary<String,Integer> symbolT;
+    private IFileTable<Integer, FileData> fileTable;
+    private IHeap<Integer> heap;
 
-    private Dictionary<String, Integer> symbolTable;
-    private Stack<Statement> executionStack;
-    private List<Integer> output;
-    private IFileTable<Integer,FileData> fileTable;
-    private Dictionary<Integer, Integer> heap;
-
-    public ProgramState (
-            Dictionary<String, Integer> symbolTable,
-            Stack<Statement> executionStack,
-            List<Integer> output,
-            IFileTable<Integer,FileData> fileTable,
-            Dictionary<Integer, Integer> heap
-    ) {
-        this.symbolTable = symbolTable;
-        this.executionStack = executionStack;
-        this.output = output;
+    public ProgramState(
+            IStack<Statement> exec,
+            IList<Integer> messages,
+            Dictionary<String,Integer> symbolT,
+            IFileTable<Integer, FileData> fileTable,
+            IHeap<Integer> heap
+    ){
+        id = IDGenerator.generate();
+        this.exec = exec;
+        this.messages = messages;
+        this.symbolT = symbolT;
         this.fileTable = fileTable;
         this.heap = heap;
     }
 
-    public Dictionary<String, Integer> getSymbolTable () {
-        return this.symbolTable;
+    public int getId(){ return id; }
+
+    public void setId(int ID){ id = ID; }
+
+    public IStack<Statement> getExecutionStack(){
+        return exec;
     }
 
-    public Stack<Statement> getExecutionStack () {
-        return this.executionStack;
+    public IList<Integer> getOutput(){
+        return messages;
     }
 
-    public List<Integer> getOutput () {
-        return this.output;
+    public Dictionary<String,Integer> getSymbolTable(){
+        return symbolT;
     }
 
-    public IFileTable<Integer,FileData> getFileTable () {
-        return this.fileTable;
-    }
+    public IFileTable<Integer,FileData> getFileTable() {return fileTable;}
 
-    public Dictionary<Integer, Integer> getHeap() {
-        return heap;
-    }
+    public IHeap<Integer> getHeap() {return heap;}
 
     @Override
-    public String toString () {
-        return  "======= Program State =======\n" +
-                "Symbol Table:\n" + symbolTable + "\n" +
-                "Execution Stack:\n" + executionStack + "\n" +
-                "File Table:\n" + fileTable + "\n" +
-                "Heap:\n" + heap + "\n" +
-                "Output:\n" + output;
+    public String toString(){
+        StringBuffer buff = new StringBuffer();
+
+        buff.append("================= Program State =================\n");
+        buff.append("ID: " + id + "\n\n");
+        buff.append("ExecutionStack:\n" + exec.toString() + "\n");
+        buff.append("Heap:\n" + heap.toString() + "\n");
+        buff.append("SymbolTable:\n" + symbolT.toString() + "\n");
+        buff.append("FileTable:\n" + fileTable.toString() + "\n\n");
+        buff.append("Output:\n" + messages.toString() + "\n");
+
+        return buff.toString();
     }
 
+    public Boolean isNotCompleted(){
+        if (exec.empty())
+            return false;
+        return true;
+    }
 
+    public ProgramState oneStep() {
+        if(getExecutionStack().empty()) {
+            System.out.println("Empty stack");
+            return null;
+        }
+
+        Statement stmt = getExecutionStack().pop();
+
+        try {
+            return stmt.execute(this);
+        } catch (StatementException e) {
+            e.printStackTrace();
+        }
+
+        return  null;
+    }
 }

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="590.0" prefWidth="616.0" scaleShape="false" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.GUI.MainWindow">
+   <children>
+      <TextField id="numberOfProgramStates" layoutX="200.0" layoutY="14.0" />
+      <Text layoutX="14.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number Of ProgramStates:" />
+      <TableView id="heapTable" layoutX="14.0" layoutY="76.0" prefHeight="200.0" prefWidth="184.0">
+        <columns>
+          <TableColumn id="addressColumn" prefWidth="75.0" text="Address" />
+          <TableColumn id="valueColumn" prefWidth="75.0" text="Value" />
+        </columns>
+      </TableView>
+      <Text layoutX="14.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Heap" />
+      <ListView id="outputList" layoutX="200.0" layoutY="76.0" prefHeight="200.0" prefWidth="200.0" />
+      <Text layoutX="200.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Output" />
+      <TableView id="fileTableTable" layoutX="402.0" layoutY="76.0" prefHeight="200.0" prefWidth="200.0">
+        <columns>
+          <TableColumn id="identifierColumn" prefWidth="75.0" text="Identifier" />
+          <TableColumn id="fileNameColumn" prefWidth="75.0" text="File Name" />
+        </columns>
+      </TableView>
+      <Text layoutX="402.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FileTable" />
+      <ListView id="programStatesIdentifierList" layoutX="200.0" layoutY="304.0" prefHeight="200.0" prefWidth="200.0" />
+      <Text layoutX="200.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ProgramStatesIDs" />
+      <TableView id="symbolTableTable" layoutX="14.0" layoutY="304.0" prefHeight="200.0" prefWidth="184.0">
+        <columns>
+          <TableColumn prefWidth="105.0" text="Variable Name" />
+          <TableColumn prefWidth="71.0" text="Value " />
+        </columns>
+      </TableView>
+      <Text layoutX="14.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Symbol Table" />
+      <ListView id="executionStackList" layoutX="402.0" layoutY="304.0" prefHeight="200.0" prefWidth="200.0" />
+      <Text layoutX="400.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Execution Stack" />
+      <Button id="runOneStepButton" layoutX="14.0" layoutY="516.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="120.0" text="Run One Step" />
+      <Button id="listOfProgramsButton" layoutX="141.0" layoutY="516.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="184.0" text="List Of Programs" />
+   </children>
+</AnchorPane>

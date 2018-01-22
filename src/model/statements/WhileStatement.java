@@ -1,9 +1,11 @@
 package model.statements;
 
 import exceptions.ExpressionException;
+import exceptions.StatementException;
 import model.ProgramState;
 import model.expressions.Expression;
 import model.utils.Dictionary;
+import model.utils.IHeap;
 
 public class WhileStatement implements Statement {
 
@@ -18,10 +20,10 @@ public class WhileStatement implements Statement {
 
 
     @Override
-    public ProgramState execute (ProgramState state) {
+    public ProgramState execute (ProgramState state)throws StatementException {
 
         Dictionary<String, Integer> symbolTable = state.getSymbolTable();
-        Dictionary<Integer, Integer> heap = state.getHeap();
+        IHeap<Integer> heap = state.getHeap();
 
         try {
 
@@ -32,10 +34,10 @@ public class WhileStatement implements Statement {
             }
 
         } catch (ExpressionException e1) {
-            e1.printStackTrace();
+            throw new StatementException(e1.toString());
         }
 
-        return state;
+        return null;
     }
 
     @Override

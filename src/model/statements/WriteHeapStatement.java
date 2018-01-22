@@ -5,6 +5,7 @@ import exceptions.StatementException;
 import model.ProgramState;
 import model.expressions.Expression;
 import model.utils.Dictionary;
+import model.utils.IHeap;
 
 public class WriteHeapStatement implements Statement {
 
@@ -19,32 +20,32 @@ public class WriteHeapStatement implements Statement {
     @Override
     public ProgramState execute (ProgramState state) throws StatementException {
 
-        Dictionary<Integer, Integer> heap = state.getHeap();
+        IHeap<Integer> heap = state.getHeap();
         Dictionary<String, Integer> symbolTable = state.getSymbolTable();
 
         int result = 0;
         try {
             result = expr.evaluate(symbolTable, heap);
         } catch (ExpressionException e) {
-            e.printStackTrace();
+            throw new StatementException(e.toString());
         }
 
-        if (!symbolTable.exists(varName))
+        if (!symbolTable.containsKey(varName))
             throw new StatementException(varName + " does not exist in symbol table\n");
 
-        int addr = symbolTable.get(varName);
-        System.out.println("ADDR: " + addr);
-        if (!heap.exists(addr)) {
+        int address = symbolTable.get(varName);
+
+        if (!heap.containsKey(address)) {
             throw new StatementException(varName + " does not exist in heap\n");
         }
 
-        heap.update(addr, result);
+        heap.put(address, result);
 
-        return state;
+        return null;
     }
 
     @Override
     public String toString () {
-        return "writeHeap( " + varName + ", " + expr + ");";
+        return "writeHeap( " + varName + ", " + expr + ")";
     }
 }

@@ -2,6 +2,7 @@ package model.expressions;
 
 import exceptions.ExpressionException;
 import model.utils.Dictionary;
+import model.utils.IHeap;
 
 public class ArithmeticExpression implements Expression {
 
@@ -16,18 +17,26 @@ public class ArithmeticExpression implements Expression {
     }
 
     @Override
-    public int evaluate (Dictionary<String, Integer> symbolTable, Dictionary<Integer, Integer> heap) throws ExpressionException {
+    public int evaluate (Dictionary<String, Integer> symbolTable, IHeap<Integer> heap) throws ExpressionException {
 
         switch (operator) {
-            case '+': return e1.evaluate(symbolTable, heap) + e2.evaluate(symbolTable, heap);
-            case '-': return e1.evaluate(symbolTable, heap) - e2.evaluate(symbolTable, heap);
-            case '*': return e1.evaluate(symbolTable, heap) * e2.evaluate(symbolTable, heap);
-            case '/': return e1.evaluate(symbolTable, heap) / e2.evaluate(symbolTable, heap);
-            case '%': return e1.evaluate(symbolTable, heap) % e2.evaluate(symbolTable, heap);
+            case '+':
+                return e1.evaluate(symbolTable, heap) + e2.evaluate(symbolTable, heap);
+            case '-':
+                return e1.evaluate(symbolTable, heap) - e2.evaluate(symbolTable, heap);
+            case '*':
+                return e1.evaluate(symbolTable, heap) * e2.evaluate(symbolTable, heap);
+            case '/':
+                if (e2.evaluate(symbolTable, heap) == 0)
+                    throw new ExpressionException("Division by 0 exception.");
+                return e1.evaluate(symbolTable, heap) / e2.evaluate(symbolTable, heap);
+            case '%':
+                if (e2.evaluate(symbolTable, heap) == 0)
+                    throw new ExpressionException("Division by 0 exception.");
+                return e1.evaluate(symbolTable, heap) % e2.evaluate(symbolTable, heap);
         }
 
         throw new ExpressionException("Invalid Operator!\n");
-
     }
 
 

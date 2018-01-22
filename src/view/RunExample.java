@@ -14,7 +14,7 @@ public class RunExample extends Command {
     @Override
     public void execute() {
         try {
-            ctr.executeAll();
+            ctr.allStep();
         } catch (Throwable e){
             System.out.println(e.getMessage());
         }

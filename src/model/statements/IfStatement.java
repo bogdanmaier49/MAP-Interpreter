@@ -1,11 +1,11 @@
 package model.statements;
 
 import exceptions.ExpressionException;
-import exceptions.ProgramStateException;
 import exceptions.StatementException;
 import model.utils.Dictionary;
 import model.ProgramState;
 import model.expressions.Expression;
+import model.utils.IHeap;
 
 public class IfStatement implements Statement {
 
@@ -25,7 +25,7 @@ public class IfStatement implements Statement {
     public ProgramState execute (ProgramState state) throws StatementException {
 
         Dictionary<String, Integer> symbolTable = state.getSymbolTable();
-        Dictionary<Integer, Integer> heap = state.getHeap();
+        IHeap<Integer> heap = state.getHeap();
 
 
         try {
@@ -43,7 +43,7 @@ public class IfStatement implements Statement {
 
 
 
-        return state;
+        return null;
     }
 
     @Override

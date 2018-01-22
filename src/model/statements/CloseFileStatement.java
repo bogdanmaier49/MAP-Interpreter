@@ -30,13 +30,13 @@ public class CloseFileStatement implements Statement{
     }
 
     @Override
-    public ProgramState execute (ProgramState state) {
+    public ProgramState execute (ProgramState state)throws StatementException {
 
         try {
             int value = expFile.evaluate(state.getSymbolTable(), state.getHeap());
 
             if(!exists(state,value)) {
-                // TODO throw new StatementException ("File not found\n");
+                throw new StatementException ("File not found\n");
             }
 
             try {
@@ -49,11 +49,11 @@ public class CloseFileStatement implements Statement{
             state.getFileTable().remove(value);
 
         } catch (ExpressionException e) {
-            // TODO e.printStackTrace();
+            throw new StatementException ("Could not close the file\n");
         }
 
 
-        return state;
+        return null;
     }
 
     @Override

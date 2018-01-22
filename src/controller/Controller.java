@@ -1,89 +1,146 @@
 package controller;
 
-import exceptions.ProgramStateException;
-import exceptions.StatementException;
+import exceptions.ControllerException;
 import model.ProgramState;
+
 import model.utils.FileData;
-import model.utils.Stack;
-import model.statements.Statement;
 import repository.Repository;
-import model.utils.Heap;
 
-
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Map;
+import java.util.concurrent.*;
 import java.util.stream.Collectors;
+import java.util.List;
+
 
 public class Controller {
 
     private Repository<ProgramState> repository;
+    private ExecutorService executor;
+
+
+
+
+
+
 
     public Controller (Repository<ProgramState> repository) {
         this.repository = repository;
     }
 
-    public ProgramState oneStep (ProgramState state) throws StatementException, ProgramStateException {
-        Stack<Statement> executionStack = state.getExecutionStack();
-
-        Statement current = executionStack.pop();
-
-        try {
-            return current.execute(state);
-        } catch (StatementException e) {
-            throw new ProgramStateException("Failed to execute.");
-        }
-    }
 
 
-    Map<Integer,Integer> conservativeGarbageCollector(Collection<Integer> symTableValues,
-                                                      Map<Integer,Integer> heap)
-    {
+
+
+
+
+
+    Map<Integer,Integer> conservativeGarbageCollector(Collection<Integer> symTableValues, Map<Integer,Integer> heap){
         return heap.entrySet().stream().filter(e->symTableValues.contains(e.getKey())).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
     }
 
-    public void executeAll () throws StatementException, ProgramStateException {
-        ProgramState state = repository.get(0);
-        Stack<Statement> executionStack = state.getExecutionStack();
+
+
+
+
+
+
+
+
+    List<ProgramState> removeCompletedPrg(List<ProgramState> inPrgList){
+        return inPrgList.stream()
+                .filter(p -> p.isNotCompleted())
+                .collect(Collectors.toList());
+    }
+
+
+
+
+
+
+
+
+
+
+
+    public void oneStepForAllPrg(List<ProgramState> prgList) throws ControllerException {
+        List<Callable<ProgramState>> callList = prgList.stream()
+                .map((ProgramState p)->(Callable<ProgramState>)(()->{return p.oneStep();}))
+                .collect(Collectors.toList());
 
         try {
+            List<ProgramState> newPrgList = executor.invokeAll(callList).stream()
+                    .map(future -> {
+                        try {
+                            return future.get();
+                        } catch (Exception e) {
+                            return null;
+                            //throw new ControllerException("One Step Error: " + e.toString());
+                        }
+                    })
+                    .filter(p -> p != null)
+                    .collect(Collectors.toList());
 
-            while (!executionStack.isEmpty()) {
-                repository.logProgramState();
 
+            prgList.addAll(newPrgList);
+            prgList.forEach(prg->repository.logProgramState(prg));
 
-                Heap h = (Heap) state.getHeap();
-                h.setContent(conservativeGarbageCollector(
-                        state.getSymbolTable().getContent().values(),
-                        state.getHeap().getContent()));
-
-
-                oneStep(state);
-            }
-
-        } catch (ProgramStateException e ) {
-            throw e;
-        } catch (StatementException e) {
-            throw e;
-        } finally {
-
-                try {
-                    for (FileData f: state.getFileTable().getValues())
-                        f.getFileDescriptor().close();
-
-                    repository.logProgramState();
-
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
+            repository.setProgramStateList(prgList);
+        }catch(InterruptedException ie){
+            throw new ControllerException("One Step Error: " + ie.toString());
         }
+
     }
 
 
-    public Repository<ProgramState> getRepository () {
+
+
+
+
+
+
+
+    public void allStep() throws ControllerException {
+        executor = Executors.newFixedThreadPool(2);
+        List<ProgramState> prgList = removeCompletedPrg(repository.getProgramStateList());
+
+        while(prgList.size() > 0) {
+            try {
+                oneStepForAllPrg(prgList);
+            } catch (ControllerException e) {
+                throw new ControllerException("All Step Exception: " + e.toString());
+            }
+            prgList.forEach( p -> p.getHeap().setContent(conservativeGarbageCollector(p.getSymbolTable().getContent().values(),p.getHeap().getContent())));
+            prgList = removeCompletedPrg(repository.getProgramStateList());
+        }
+
+        executor.shutdownNow();
+
+        prgList.forEach(prg->repository.logProgramState(prg));
+
+        try {
+            List<ProgramState> tmpList = repository.getProgramStateList();
+            for (ProgramState p : tmpList) {
+                for (FileData fd : p.getFileTable().getValues()) {
+                    fd.getFileDescriptor().close();
+                }
+            }
+        }catch (IOException ie){
+            System.out.println(ie.getMessage());
+        }
+
+        repository.setProgramStateList(prgList);
+    }
+
+
+
+
+
+
+
+
+    public Repository<ProgramState> getRepository() {
         return repository;
     }
-
 }

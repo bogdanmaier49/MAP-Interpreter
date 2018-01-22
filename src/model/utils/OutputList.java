@@ -1,8 +1,9 @@
 package model.utils;
 
 import java.util.ArrayList;
+import java.util.stream.Stream;
 
-public class OutputList<T> implements List<T> {
+public class OutputList<T> implements IList<T> {
 
     private ArrayList<T> arr;
 
@@ -41,9 +42,19 @@ public class OutputList<T> implements List<T> {
         StringBuffer str = new StringBuffer();
 
         for (int i=0; i < arr.size(); i++)
-             str.append("    " + arr.get(i) + "\n");
+             str.append(arr.get(i) + "\n");
 
         return str.toString();
+    }
+
+    @Override
+    public Stream<T> stream (){
+        return arr.stream();
+    }
+
+    @Override
+    public ArrayList<T> getArrayList () {
+        return this.arr;
     }
 
 }

@@ -5,6 +5,7 @@ import exceptions.StatementException;
 import model.utils.Dictionary;
 import model.ProgramState;
 import model.expressions.Expression;
+import model.utils.IHeap;
 
 public class AssignStatement implements Statement{
 
@@ -19,22 +20,22 @@ public class AssignStatement implements Statement{
     @Override
     public ProgramState execute (ProgramState state) throws StatementException {
         Dictionary<String, Integer> symbolTable = state.getSymbolTable();
-        Dictionary<Integer, Integer> heap = state.getHeap();
+        IHeap<Integer> heap = state.getHeap();
 
         try {
 
             int val = e1.evaluate(symbolTable, heap);
-            symbolTable.add(variable, val);
+            symbolTable.put(variable, val);
 
         } catch (ExpressionException e) {
             throw new StatementException("Could not assign: " + e1 + " to " + variable + " (" + e + ")");
         }
 
-        return state;
+        return null;
     }
 
     @Override
     public String toString () {
-        return variable + " = " + e1 + ";";
+        return variable + " = " + e1;
     }
 }

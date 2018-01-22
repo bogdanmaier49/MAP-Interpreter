@@ -1,20 +1,23 @@
 package model.utils;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
-public interface Dictionary<K, T> {
+public interface Dictionary<K, V> {
 
-    void add(K key, T value);
-    void remove(K key);
-    void update (K key, T value);
-    T get (K key);
-    boolean exists (K key);
-    int size();
+    boolean containsKey(K key);
+    boolean containsValue(V value);
 
-    public void setContent (Map<K, T> m);
+    V get(K key);
+    V put(K key, V value);
 
-    public HashMap<K, T> getContent ();
+    Map<K, V> getContent();
+    void setContent(Map<K, V> content);
+
+    Set<K> keySet();
+    Dictionary copy();
 
 }

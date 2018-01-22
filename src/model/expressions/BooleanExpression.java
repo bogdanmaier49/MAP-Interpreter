@@ -2,6 +2,7 @@ package model.expressions;
 
 import exceptions.ExpressionException;
 import model.utils.Dictionary;
+import model.utils.IHeap;
 
 public class BooleanExpression implements Expression {
 
@@ -16,7 +17,7 @@ public class BooleanExpression implements Expression {
     }
 
     @Override
-    public int evaluate (Dictionary<String, Integer> symbolTable, Dictionary<Integer, Integer> heap) {
+    public int evaluate (Dictionary<String, Integer> symbolTable, IHeap<Integer> heap) throws ExpressionException {
 
 
         try {
@@ -41,7 +42,7 @@ public class BooleanExpression implements Expression {
             }
 
         } catch (ExpressionException e) {
-            e.printStackTrace();
+            throw new ExpressionException(e.toString());
         }
 
         return 0;

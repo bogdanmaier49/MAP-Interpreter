@@ -1,8 +1,7 @@
 package model.statements;
 
-import exceptions.StatementException;
 import model.ProgramState;
-import model.utils.Stack;
+import model.utils.IStack;
 
 public class CompStatement implements Statement {
 
@@ -16,13 +15,13 @@ public class CompStatement implements Statement {
     }
 
     @Override
-    public ProgramState execute (ProgramState state) throws StatementException {
-        Stack<Statement> execStack = state.getExecutionStack();
+    public ProgramState execute (ProgramState state){
+        IStack<Statement> execStack = state.getExecutionStack();
 
         execStack.push(e2);
         execStack.push(e1);
 
-        return state;
+        return null;
     }
 
     @Override

@@ -1,69 +1,68 @@
 package model.utils;
 
-
-import model.utils.Dictionary;
-
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.Set;
 
-public class SymbolTable implements Dictionary<String,Integer> {
+public class SymbolTable<K,V> implements Dictionary<K,V> {
 
-    private HashMap<String, Integer> table;
+    private Map<K, V> content;
 
-    public SymbolTable () {
-        table = new HashMap<>();
+    public SymbolTable(){
+        content = new HashMap<>();
     }
 
     @Override
-    public void add (String key, Integer value) {
-        table.put(key, value);
+    public boolean containsKey(K key) {
+        return this.content.containsKey(key);
     }
 
     @Override
-    public void remove (String key) {
-        table.remove(key);
+    public boolean containsValue(V value) {
+        return this.content.containsValue(value);
     }
 
     @Override
-    public Integer get (String key) {
-        return table.get(key);
+    public V get(K key) {
+        return this.content.get(key);
     }
 
     @Override
-    public boolean exists (String key) {
-        return table.containsKey(key);
+    public V put(K key, V value) {
+        return this.content.put(key, value);
     }
 
     @Override
-    public int size () {
-        return table.size();
+    public Map<K, V> getContent() {
+        return content;
     }
 
     @Override
-    public void update (String key, Integer value) {
-        table.put(key, value);
+    public void setContent(Map<K, V> content){
+        this.content = content;
     }
 
     @Override
-    public String toString () {
-        StringBuffer str = new StringBuffer();
+    public Set<K> keySet() {
+        return content.keySet();
+    }
 
-        for(Map.Entry<String, Integer> e : table.entrySet()){
-            str.append("    " + e.getKey() + ":" + e.getValue() + "\n");
+    public String toString(){
+        StringBuilder result = new StringBuilder();
+        for( K key  : content.keySet() ){
+            result.append(key.toString())
+                    .append("->")
+                    .append(content.get(key))
+                    .append("\n");
         }
-
-        return str.toString();
+        return result.toString();
     }
 
     @Override
-    public void setContent (Map<String, Integer> m) {
-        table =  (HashMap<String, Integer>) m;
-    }
-
-    @Override
-    public HashMap<String, Integer> getContent () {
-        return table;
+    public SymbolTable<K,V> copy(){
+        SymbolTable<K,V> newDictionary = new SymbolTable<K,V>();
+        newDictionary.setContent(this.getContent());
+        return newDictionary;
     }
 
 }

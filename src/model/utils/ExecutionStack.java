@@ -2,43 +2,64 @@ package model.utils;
 
 import model.statements.Statement;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Stack;
 
-public class ExecutionStack implements Stack<Statement> {
+public class ExecutionStack implements IStack<Statement> {
+    private Stack<Statement> stack;
 
-    private Deque<Statement> stack;
-
-    public ExecutionStack () {
-        stack = new ArrayDeque<>();
+    public ExecutionStack(){
+        stack = new Stack<>();
     }
 
     @Override
-    public void push (Statement t) {
-        stack.push(t);
+    public boolean empty() {
+        return this.stack.empty();
     }
 
     @Override
-    public Statement pop () {
-        return stack.pop();
+    public Statement peek() {
+        return this.stack.peek();
     }
 
     @Override
-    public Statement first () {
-        return stack.getFirst();
+    public Statement pop() {
+        return this.stack.pop();
     }
 
     @Override
-    public boolean isEmpty() {
-        return stack.isEmpty();
+    public Statement push(Statement item) {
+        return this.stack.push(item);
     }
 
     @Override
-    public String toString () {
-        StringBuffer str = new StringBuffer();
-        for(Statement i : stack){
-            str.append("    " + i+"\n");
+    public int search(Object o) {
+        return this.stack.search(o);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder();
+        Stack<Statement> aux = (Stack<Statement>) stack.clone();
+
+        while(!aux.empty()){
+            result.append(aux.pop().toString())
+                    .append("\n");
         }
-        return str.toString();
+
+        return result.toString();
+    }
+
+    @Override
+    public List<Statement> values(){
+        List<Statement> result = new ArrayList<>();
+        Stack<Statement> aux = (Stack<Statement>) stack.clone();
+
+        while(!aux.empty()){
+            result.add(aux.pop());
+        }
+
+        return result;
     }
 }

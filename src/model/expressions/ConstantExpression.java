@@ -1,6 +1,7 @@
 package model.expressions;
 
 import model.utils.Dictionary;
+import model.utils.IHeap;
 
 public class ConstantExpression implements Expression {
 
@@ -11,7 +12,7 @@ public class ConstantExpression implements Expression {
     }
 
     @Override
-    public int evaluate (Dictionary<String, Integer> symbolTable, Dictionary<Integer, Integer> heap) {
+    public int evaluate (Dictionary<String, Integer> symbolTable, IHeap<Integer> heap) {
         return value;
     }
 

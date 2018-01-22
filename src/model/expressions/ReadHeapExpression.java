@@ -2,6 +2,7 @@ package model.expressions;
 
 import exceptions.ExpressionException;
 import model.utils.Dictionary;
+import model.utils.IHeap;
 
 public class ReadHeapExpression implements Expression {
 
@@ -12,23 +13,23 @@ public class ReadHeapExpression implements Expression {
     }
 
     @Override
-    public int evaluate (Dictionary<String, Integer> symbolTable, Dictionary<Integer, Integer> heap) throws ExpressionException {
+    public int evaluate (Dictionary<String, Integer> symbolTable, IHeap<Integer> heap) throws ExpressionException {
 
-        if (! symbolTable.exists(varName)) {
+        if (! symbolTable.containsKey(varName)) {
             throw new ExpressionException("The variable "+ varName +" does not exist\n");
         }
 
-        int addr = symbolTable.get(varName);
+        int address = symbolTable.get(varName);
 
-        if (! heap.exists(addr))
-            throw new ExpressionException("The address " + addr + " does not exist\n");
+        if (! heap.containsKey(address))
+            throw new ExpressionException("The address " + address + " does not exist\n");
 
-        return heap.get(addr);
+        return heap.get(address);
     }
 
     @Override
     public String toString () {
-        return "readHeap( " + varName + " );";
+        return "readHeap( " + varName + " )";
     }
 
 }

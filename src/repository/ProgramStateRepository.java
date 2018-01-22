@@ -1,19 +1,19 @@
 package repository;
 
 import model.ProgramState;
-import model.statements.Statement;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ProgramStateRepository implements Repository<ProgramState> {
 
-    private ArrayList<ProgramState> arr;
+    private List<ProgramState> arr;
     private String logFilePath;
 
     public ProgramStateRepository (String logFilePath) {
         this.logFilePath = logFilePath;
-        arr = new ArrayList<ProgramState>();
+        arr = new ArrayList<>();
     }
 
     @Override
@@ -22,43 +22,34 @@ public class ProgramStateRepository implements Repository<ProgramState> {
     }
 
     @Override
-    public void remove(ProgramState elem) {
-        arr.remove(elem);
-    }
-
-    @Override
-    public int size (){
-        return arr.size();
-    }
-
-    @Override
     public ProgramState get (int i){
         return arr.get(i);
     }
 
     @Override
-    public ProgramState[] toArray (){
-        return (ProgramState[]) arr.toArray();
-    }
-
-    @Override
-    public void logProgramState () {
+    public void logProgramState (ProgramState ps) {
 
         try {
             PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(logFilePath, true)));
 
             pw.write("\n\n");
-            pw.write(arr.get(0).toString());
+            pw.write(ps.toString());
 
             pw.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 
     @Override
-    public String getLogFilePath () {
-        return logFilePath;
+    public List<ProgramState> getProgramStateList (){
+        return arr;
+    }
+
+    @Override
+    public void setProgramStateList (List<ProgramState> programStates) {
+        this.arr = programStates;
     }
 
 }

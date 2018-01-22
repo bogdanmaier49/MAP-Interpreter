@@ -1,13 +1,15 @@
 package repository;
 
+import model.ProgramState;
+
+import java.util.List;
+
 public interface Repository<T> {
 
     void add (T elem);
-    void remove (T elem);
-    int size ();
     T get (int i);
-    T[] toArray ();
-    void logProgramState();
-    String getLogFilePath();
+    void logProgramState(ProgramState ps);
+    java.util.List<ProgramState> getProgramStateList ();
+    void setProgramStateList (List<ProgramState> programStates);
 
 }

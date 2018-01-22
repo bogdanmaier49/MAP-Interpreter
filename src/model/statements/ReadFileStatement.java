@@ -1,11 +1,13 @@
 package model.statements;
 
 import exceptions.ExpressionException;
+import exceptions.StatementException;
 import model.ProgramState;
 import model.expressions.Expression;
 import model.utils.Dictionary;
 import model.utils.FileData;
 import model.utils.IFileTable;
+import model.utils.IHeap;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -32,42 +34,43 @@ public class ReadFileStatement implements Statement {
     }
 
     @Override
-    public ProgramState execute (ProgramState state) {
+    public ProgramState execute (ProgramState state) throws StatementException {
 
         Dictionary<String, Integer> symbolTable = state.getSymbolTable();
-        Dictionary<Integer, Integer> heap = state.getHeap();
+        IHeap<Integer> heap = state.getHeap();
+
+
+        int value = 0;
 
         try {
-            int value = fileID.evaluate(symbolTable, heap);
-
-             if (! exists(state, value)) {
-                 // TODO throw file not found exception
-                 System.out.println("File not found");
-             }
-
-            try {
-                BufferedReader buff = state.getFileTable().get(value).getFileDescriptor();
-                String line = buff.readLine();
-
-                int i;
-
-                if (line.equals(null))
-                    i = 0;
-                else
-                    i = Integer.parseInt(line);
-
-                state.getSymbolTable().add(varName,i);
-
-            }catch(IOException ioe){
-                // TODO throw new Program State Exception (ioe.getMessage());
-                System.out.println("Aci ");
-            }
-
+            value = fileID.evaluate(symbolTable, heap);
         } catch (ExpressionException e) {
             e.printStackTrace();
         }
 
-        return state;
+        if (! exists(state, value)) {
+            throw new StatementException("File not found!");
+        }
+
+        BufferedReader buff = state.getFileTable().get(value).getFileDescriptor();
+        String line = null;
+
+        try {
+            line = buff.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        int i;
+
+        if (line.equals(null))
+            i = 0;
+        else
+            i = Integer.parseInt(line);
+
+        symbolTable.put(varName,i);
+
+        return null;
     }
 
     @Override

@@ -33,22 +33,24 @@ public class OpenRFileStatement implements Statement {
     @Override
     public ProgramState execute (ProgramState state) throws StatementException {
 
-        if (exists(state, this.fileName))
+        if (exists(state, this.fileName)) {
             throw new StatementException("File: " + fileName + " already open");
+        }
 
         try {
+
             BufferedReader reader = new BufferedReader(new FileReader(fileName));
             FileData fd = new FileData(fileName, reader);
             int id = IDGenerator.generate();
             state.getFileTable().add(id,fd);
 
-            state.getSymbolTable().add(varName, id);
+            state.getSymbolTable().put(varName, id);
 
         } catch (IOException e) {
             throw new StatementException(e.toString());
         }
 
-        return  state;
+        return  null;
     }
 
     @Override
